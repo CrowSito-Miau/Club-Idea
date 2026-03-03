@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acceso Secreto</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        background: #111;
+        padding: 40px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 0 20px rgba(0, 255, 150, 0.3);
+        width: 300px;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+        color: #00ff99;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+        margin-bottom: 15px;
+        font-size: 16px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        background-color: #00ff99;
+        color: black;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background-color: #00cc77;
+    }
+
+    #resultado {
+        margin-top: 20px;
+        font-size: 16px;
+    }
+
+    .error {
+        color: red;
+    }
+
+    .success {
+        color: #00ff99;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Acceso</h1>
+    <input type="text" id="codigo" placeholder="Introduce el código">
+    <button onclick="verificarCodigo()">Entrar</button>
+    <div id="resultado"></div>
+</div>
+
+<script>
+    const codigoCorrecto = "a7K3m9Q2"; // Cambia esto por el código que quieras
+
+    function generarCoordenadas() {
+        let lat = (Math.random() * 180 - 90).toFixed(6);
+        let lon = (Math.random() * 360 - 180).toFixed(6);
+        return `Lat: ${lat}, Lon: ${lon}`;
+    }
+
+    function verificarCodigo() {
+        let codigoIngresado = document.getElementById("codigo").value;
+        let resultado = document.getElementById("resultado");
+
+        if (codigoIngresado === codigoCorrecto) {
+            let coords = generarCoordenadas();
+            resultado.innerHTML = "Coordenadas generadas:<br>" + coords;
+            resultado.className = "success";
+        } else {
+            resultado.innerHTML = "Código incorrecto.";
+            resultado.className = "error";
+        }
+    }
+</script>
+
+</body>
+</html>
