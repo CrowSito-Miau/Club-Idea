@@ -84,11 +84,14 @@
 <script>
     const codigoCorrecto = "a7K3m9Q2"; // Cambia esto por el código que quieras
 
-    function generarCoordenadas() {
-        let lat = (Math.random() * 180 - 90).toFixed(6);
-        let lon = (Math.random() * 360 - 180).toFixed(6);
-        return `Lat: ${lat}, Lon: ${lon}`;
-    }
+     function generarCoordenadas() {
+    const exoplanetas = [
+        { nombre: "Proxima Centauri b", x: 4.24, y: 0.5, z: -0.2 },
+    ];
+
+    let planeta = exoplanetas[Math.floor(Math.random() * exoplanetas.length)];
+    return `${planeta.nombre} → X: ${planeta.x} ly, Y: ${planeta.y} ly, Z: ${planeta.z} ly`;
+}
 
     function verificarCodigo() {
         let codigoIngresado = document.getElementById("codigo").value;
